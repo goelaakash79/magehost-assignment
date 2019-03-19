@@ -43,10 +43,14 @@
         </form>
     </div>
 
-    <div class="news row card">
-        <h6>Lorem ipsum dolor sit amet.</h6>
-        <p>6015 points | Cogito | a year ago | 436 comments | <a href="#">(https://www.google.com)</a></p>
-    </div>
+    <% news.forEach((data) => { %>
+        <div class="news row card">
+            <% let now = new Date %>
+            <% let time =  now.getFullYear() - data.created_at.slice(0,4)  %>
+            <h6><%= data.title %></h6>
+            <p><%= data.points %> | <%= data.author %> | <%= time %> year ago | <%= data.num_comments %> | <a href="<%= data.url %>" target="_blank">(<%= data.url %>)</a></p>
+        </div>
+    <% }) %>
 
 </div>
 

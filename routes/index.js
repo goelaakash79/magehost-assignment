@@ -1,6 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const bcrypt = require('bcryptjs');
+const request = require('request');
 const passport = require('passport');
 const LocalStrategy = require('passport-local').Strategy;
 
@@ -61,11 +62,20 @@ router.post('/register', (req, res) => {
 ;
 
 router.get('/feed', isAuthenticated, (req, res) => {
-    // console.log(req.user);
-    res.render('index', {username: req.user.username});
+    let url = process.env.URL;
+    let username = req.user.username;
+    // let username = 'none';
+    url += 'search?tags=story';
+    // console.log(url);
+    request(url, (error, response, body) => {
+        if(!error && response.statusCode == 200) {
+            let news = JSON.parse(body);
+            res.render('index', {username: username, news: news.hits});
+        }
+    });
 });
 
-router.post('/feed', isAuthenticated, (req, res) => {
+router.post('/feed', (req, res) => {
     console.log(req.post);
     res.send("hi");
 });
