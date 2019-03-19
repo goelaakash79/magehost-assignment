@@ -3,6 +3,25 @@ body {
     font-family: 'Nunito';
 }
 
+.profile{
+    position: absolute;
+    background: steelblue;
+    color: white;
+    font-weight: 700;
+    padding: 8px;
+    cursor: pointer;
+    margin: -16px;
+    z-index: 999;
+    border-bottom-right-radius: 16px;
+    opacity: 0.8;
+    transition: 0.2s all ease-in;
+}
+
+.profile:hover{
+    background: #333333;
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.16), 0px 2px 4px rgba(0, 0, 0, 0.23);
+}
+
 .card {
     border: 0;
     padding: 12px;
@@ -97,11 +116,6 @@ a:hover{
     margin-top: 6px;
 }
 
-select{
-    /*background: #F6F6EF;*/
-    /*border: 1px solid #666666;*/
-}
-
 option{
     padding: 0;
     margin: 0;
@@ -110,5 +124,77 @@ option{
 @media (max-width: 475px) {
     .brand {
         margin-bottom: 8px;
+    }
+}
+
+.auth{
+    display: flex;
+    top: 15vh;
+    flex-direction: row;
+}
+
+.auth .col-sm-6{
+    flex-grow: 3;
+}
+
+.auth h2{
+    font-family: VT323;
+    font-size: 36px;
+    margin-top: 4%;
+    font-weight: 700;
+}
+
+label{
+    font-weight: 700;
+    font-family: 'VT323';
+    font-size: 24px;
+}
+
+button{
+    font-weight: 700!important;
+    font-family: VT323;
+    font-size: 20px!important;
+    padding: 4px 12px!important;
+}
+
+button:hover{
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.16), 0px 2px 4px rgba(0, 0, 0, 0.23);
+}
+
+input{
+    font-family: VT323;
+}
+
+.auth a{
+    font-family: VT323;
+    font-size: 16px;
+    margin-left: 32px;
+}
+
+.logo{
+    position: absolute;
+    right: 0;
+    z-index: 999;
+    padding: 16px;
+    background: #FF742B;
+    color: #ffffff;
+    font-family: VT323;
+    font-weight: 700;
+    font-size: 24px;
+    top:0;
+    transition: 0.3s all ease-in-out;
+    cursor: pointer;
+    border-bottom-left-radius: 16px;
+}
+
+.logo:hover{
+    opacity: 0.8;
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.16), 0px 2px 4px rgba(0, 0, 0, 0.23);
+}
+
+@media (max-width: 475px) {
+    .auth {
+        top: 5%;
+        bottom: 5%;
     }
 }

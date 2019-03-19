@@ -1,0 +1,38 @@
+<% include partials/header %>
+
+<style>
+    body{
+        background-image: url("http://sfwallpaper.com/images/background-image-for-website-1.jpg");
+        background-size: cover;
+        background-repeat: no-repeat;
+    }
+</style>
+
+<div class="container">
+    <div class="auth row card">
+        <div class="logo">
+            Hacker News
+        </div>
+        <img class="image col-sm-6" src="https://cdn.dribbble.com/users/609229/screenshots/4180026/reader_girl.png" width="100%" alt="">
+        <div class="col-sm-6">
+            <h2>Login</h2>
+            <br>
+            <form action="/" method="post">
+                <div class="row">
+                    <label for="username" class="col-sm-4">email </label>
+                    <input type="email" class="col-sm-6" name="username" id="username" placeholder="enter username">
+                </div>
+                <br>
+                <div class="row">
+                    <label for="username" class="col-sm-4">password </label>
+                    <input type="password" class="col-sm-6" name="username" id="username" placeholder="enter username">
+                </div>
+                <br>
+                <button class="btn btn-dark">Submit</button>
+                <a href="/register">Not registered? Register here!</a>
+            </form>
+        </div>
+    </div>
+</div>
+
+<% include partials/footer %>
