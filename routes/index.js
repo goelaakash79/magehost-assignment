@@ -61,27 +61,33 @@ router.post('/register', (req, res) => {
 })
 ;
 
-router.get('/feed', (req, res) => {
+router.get('/feed', isAuthenticated, (req, res) => {
     let url = process.env.URL;
-    // let username = req.user.username;
-    let username = 'none';
+    let username = req.user.username;
     url += 'search?tags=story';
-    // console.log(url);
     request(url, (error, response, body) => {
         if(!error && response.statusCode == 200) {
             let news = JSON.parse(body);
-            res.render('index', {username: username, news: news.hits});
+            res.render('index', {username: username, news: news.hits, pages: news.nbPages});
         }
     });
 });
 
-router.post('/feed', (req, res) => {
-    let username = 'none';
-    let url = process.env.URL + `search?query=${req.body.query}`;
+router.post('/feed', isAuthenticated, (req, res) => {
+    let username = req.user.username;
+    console.log(req.body);
+    let url = process.env.URL + 'search?';
+    if(req.body.query) {
+        url += `query=${req.body.query}`;
+    }
+    if(req.body.tag) {
+        url += `tags=${req.body.tag}` + `&page=10`;
+    }
+    console.log(url);
     request(url, (error, response, body) => {
         if(!error && response.statusCode == 200) {
             let news = JSON.parse(body);
-            res.render('index', {username: username, news: news.hits});
+            res.render('index', {username: username, news: news.hits, pages: news.nbPages});
         }
     });
 });

@@ -18,11 +18,11 @@
     </div>
 
     <div class="filters row">
-        <form action="/" method="post">
+        <form action="/feed" method="post">
             <span>Search</span>
             <select name="tag" id="" style="margin-left: 16px; font-size: 14px; padding: 0px;">
-                <option value="stories">Stories</option>
-                <option value="comments">Comments</option>
+                <option value="story">Stories</option>
+                <option value="comment">Comments</option>
             </select>
             <span style="margin-left: 16px;">by</span>
             <select name="date" id="" style="margin-left: 16px; font-size: 14px; padding: 0px;">
@@ -30,7 +30,7 @@
                 <option value="date">Date</option>
             </select>
             <span style="margin-left: 16px;">for</span>
-            <select name="date" id="" style="margin-left: 16px; font-size: 14px; padding: 0px;">
+            <select name="time" id="" style="margin-left: 16px; font-size: 14px; padding: 0px;">
                 <option value="all time">All time</option>
                 <option value="last 24h">Last 24h</option>
                 <option value="past week">Past Week</option>
@@ -53,6 +53,13 @@
         </div>
     <% }) %>
 
+    <br><br>
+
+    <div class="row pages text-center">
+        <%for(let i = 1; i <= pages; i++) { %>
+            <span><%= i %></span>
+        <% } %>
+    </div>
 </div>
 
 <% include partials/footer %>
