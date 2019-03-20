@@ -10,10 +10,11 @@
                 <span>H</span>Hacker News
             </p>
         </div>
-        <div class="search">
+        <form method="post" action="/feed" class="search">
             <i class="fas fa-search"></i>
-            <input type="text" placeholder="Search stories">
-        </div>
+            <input type="text" name="query" style="font-family: Nunito;" placeholder="Search stories">
+            <button class="btn" style="padding: 8px 16px!important ; color: #FF742B; background: white; float: right">GO</button>
+        </form>
     </div>
 
     <div class="filters row">

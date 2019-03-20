@@ -61,10 +61,10 @@ router.post('/register', (req, res) => {
 })
 ;
 
-router.get('/feed', isAuthenticated, (req, res) => {
+router.get('/feed', (req, res) => {
     let url = process.env.URL;
-    let username = req.user.username;
-    // let username = 'none';
+    // let username = req.user.username;
+    let username = 'none';
     url += 'search?tags=story';
     // console.log(url);
     request(url, (error, response, body) => {
@@ -76,8 +76,14 @@ router.get('/feed', isAuthenticated, (req, res) => {
 });
 
 router.post('/feed', (req, res) => {
-    console.log(req.post);
-    res.send("hi");
+    let username = 'none';
+    let url = process.env.URL + `search?query=${req.body.query}`;
+    request(url, (error, response, body) => {
+        if(!error && response.statusCode == 200) {
+            let news = JSON.parse(body);
+            res.render('index', {username: username, news: news.hits});
+        }
+    });
 });
 
 passport.use(new LocalStrategy(function (username, password, done) {
